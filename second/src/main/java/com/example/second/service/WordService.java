@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -166,6 +167,36 @@ public class WordService {
                 .success(true)
                 .message("Ok")
                 .data(wordPage.map(this.wordMapper::toDto))
+                .build();
+    }
+
+    public ResponseDto<WordResponse> getAllByAudioId(Integer id) {
+        Optional<Word> optional = this.wordRepository.findByAudioIdAndDeletedAtIsNull(id);
+        if (optional.isEmpty()) {
+            return ResponseDto.<WordResponse>builder()
+                    .code(-1)
+                    .message("Words are not found")
+                    .build();
+        }
+        return ResponseDto.<WordResponse>builder()
+                .success(true)
+                .message("Ok")
+                .data(this.wordMapper.toDto(optional.get()))
+                .build();
+    }
+
+    public ResponseDto<WordResponse> getAllByCategoryId(Integer id) {
+        Optional<Word> optional = this.wordRepository.findByCategoryIdAndDeletedAtIsNull(id);
+        if (optional.isEmpty()) {
+            return ResponseDto.<WordResponse>builder()
+                    .code(-1)
+                    .message("Words are not found")
+                    .build();
+        }
+        return ResponseDto.<WordResponse>builder()
+                .success(true)
+                .message("Ok")
+                .data(this.wordMapper.toDto(optional.get()))
                 .build();
     }
 }

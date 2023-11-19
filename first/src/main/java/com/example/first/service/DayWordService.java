@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -166,6 +167,22 @@ public class DayWordService {
                 .success(true)
                 .message("Ok")
                 .data(typesPage.map(this.dayWordMapper::toDto))
+                .build();
+    }
+
+    public ResponseDto<DayWordResponse> getAllByWordId(Integer id) {
+        Optional<DayWord> optional = this.dayWordRepository.findByWordIdAndDeletedAtIsNull(id);
+        if (optional.isEmpty()) {
+            return ResponseDto.<DayWordResponse>builder()
+                    .code(-1)
+                    .message("DayWords are not found")
+                    .build();
+        }
+        DayWord dayWord = optional.get();
+        return ResponseDto.<DayWordResponse>builder()
+                .success(true)
+                .message("Ok")
+                .data(this.dayWordMapper.toDto(dayWord))
                 .build();
     }
 }

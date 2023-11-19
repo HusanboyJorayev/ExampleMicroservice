@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -166,6 +167,36 @@ public class WordInSentenceService {
                 .success(true)
                 .message("Ok")
                 .data(typesPage.map(this.wordInSentenceMapper::toDto))
+                .build();
+    }
+
+    public ResponseDto<WordInSentenceResponse> getAllByWordId(Integer id) {
+        Optional<WordInSentence> optional = this.wordInSentenceRepository.findByWordIdAndDeletedAtIsNull(id);
+        if (optional.isEmpty()) {
+            return ResponseDto.<WordInSentenceResponse>builder()
+                    .code(-1)
+                    .message("WordInSentences are not found")
+                    .build();
+        }
+        return ResponseDto.<WordInSentenceResponse>builder()
+                .success(true)
+                .message("Ok")
+                .data(this.wordInSentenceMapper.toDto(optional.get()))
+                .build();
+    }
+
+    public ResponseDto<WordInSentenceResponse> getAllByWordInSentenceId(Integer id) {
+        Optional<WordInSentence> optional = this.wordInSentenceRepository.findBySentenceIdAndDeletedAtIsNull(id);
+        if (optional.isEmpty()) {
+            return ResponseDto.<WordInSentenceResponse>builder()
+                    .code(-1)
+                    .message("WordInSentences are not found")
+                    .build();
+        }
+        return ResponseDto.<WordInSentenceResponse>builder()
+                .success(true)
+                .message("Ok")
+                .data(this.wordInSentenceMapper.toDto(optional.get()))
                 .build();
     }
 }

@@ -49,4 +49,14 @@ public class WordController {
     public ResponseDto<Page<WordResponse>> getPage(@RequestParam Integer page, @RequestParam Integer size) {
         return this.wordService.getPage(page, size);
     }
+
+    @GetMapping("/getAllByAudioId")
+    public ResponseDto<WordResponse> getAllByAudioId(@RequestParam Integer id) {
+        return this.wordService.getAllByAudioId(id);
+    }
+
+    @GetMapping("/getAllByCategoryId")
+    public ResponseDto<WordResponse> getAllByCategoryId(@RequestParam Integer id) {
+        return this.wordService.getAllByCategoryId(id);
+    }
 }

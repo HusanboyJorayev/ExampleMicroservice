@@ -50,4 +50,9 @@ public class NoteController {
     public ResponseDto<Page<NoteResponse>> getPage(@RequestParam Integer page, @RequestParam Integer size) {
         return this.noteService.getPage(page, size);
     }
+
+    @GetMapping("/getAllNoteByWordId")
+    public ResponseDto<NoteResponse> getAllByWordId(@RequestParam Integer id) {
+        return this.noteService.getAllByWordId(id);
+    }
 }

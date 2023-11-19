@@ -16,6 +16,9 @@ import java.util.Optional;
 public interface WordInSentenceRepository extends JpaRepository<WordInSentence,Integer> {
     Optional<WordInSentence> findByIdAndDeletedAtIsNull(Integer id);
 
+    Optional<WordInSentence>findByWordIdAndDeletedAtIsNull(Integer wordId);
+    Optional<WordInSentence>findBySentenceIdAndDeletedAtIsNull(Integer sentenceId);
+
 
     @Query(
             nativeQuery = true,

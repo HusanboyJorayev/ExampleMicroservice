@@ -15,6 +15,9 @@ import java.util.Optional;
 public interface WordRepository extends JpaRepository<Word, Integer> {
     Optional<Word> findByIdAndDeletedAtIsNull(Integer id);
 
+    Optional<Word>findByAudioIdAndDeletedAtIsNull(Integer audioId);
+    Optional<Word>findByCategoryIdAndDeletedAtIsNull(Integer categoryId);
+
 
     @Query(
             nativeQuery = true,

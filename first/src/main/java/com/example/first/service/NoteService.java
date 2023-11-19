@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -166,6 +167,21 @@ public class NoteService {
                 .success(true)
                 .message("Ok")
                 .data(typesPage.map(this.noteMapper::toDto))
+                .build();
+    }
+
+    public ResponseDto<NoteResponse> getAllByWordId(Integer id) {
+        Optional<Note> optional = this.noteRepository.findByWordIdAndDeletedAtIsNull(id);
+        if (optional.isEmpty()) {
+            return ResponseDto.<NoteResponse>builder()
+                    .code(-1)
+                    .message("Notes are not found")
+                    .build();
+        }
+        return ResponseDto.<NoteResponse>builder()
+                .success(true)
+                .message("Ok")
+                .data(this.noteMapper.toDto(optional.get()))
                 .build();
     }
 }

@@ -49,4 +49,9 @@ public class WordTypeController {
     public ResponseDto<Page<WordTypeResponse>> getPage(@RequestParam Integer page, @RequestParam Integer size) {
         return this.wordTypeService.getPage(page, size);
     }
+
+    @GetMapping("/getAllByWordId")
+    public ResponseDto<WordTypeResponse> getAllByWordId(@RequestParam Integer id) {
+        return this.wordTypeService.getAllByWordId(id);
+    }
 }

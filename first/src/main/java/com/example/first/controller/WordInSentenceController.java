@@ -49,4 +49,14 @@ public class WordInSentenceController {
     public ResponseDto<Page<WordInSentenceResponse>> getPage(@RequestParam Integer page, @RequestParam Integer size) {
         return this.wordInSentenceService.getPage(page, size);
     }
+
+    @GetMapping("/getAllByWordId")
+    public ResponseDto<WordInSentenceResponse> getAllByWordId(@RequestParam Integer id) {
+        return this.wordInSentenceService.getAllByWordId(id);
+    }
+
+    @GetMapping("/getAllByWordInSentenceId")
+    public ResponseDto<WordInSentenceResponse> getAllByWordInSentenceId(@RequestParam Integer id) {
+        return this.wordInSentenceService.getAllByWordInSentenceId(id);
+    }
 }
