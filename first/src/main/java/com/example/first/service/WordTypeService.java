@@ -170,18 +170,33 @@ public class WordTypeService {
                 .build();
     }
 
-    public ResponseDto<WordTypeResponse> getAllByWordId(Integer id) {
-        Optional<WordType> optional = this.wordTypeRepository.findByIdAndDeletedAtIsNull(id);
+    public ResponseDto<List<WordTypeResponse>> getAllByWordId(Integer id) {
+        List<WordType> optional = this.wordTypeRepository.findByWordIdAndDeletedAtIsNull(id);
         if (optional.isEmpty()) {
-            return ResponseDto.<WordTypeResponse>builder()
+            return ResponseDto.<List<WordTypeResponse>>builder()
                     .code(-1)
                     .message("WordTypesAre not found")
                     .build();
         }
-        return ResponseDto.<WordTypeResponse>builder()
+        return ResponseDto.<List<WordTypeResponse>>builder()
                 .success(true)
                 .message("Ok")
-                .data(this.wordTypeMapper.toDto(optional.get()))
+                .data(optional.stream().map(this.wordTypeMapper::toDto).toList())
+                .build();
+    }
+
+    public ResponseDto<List<WordTypeResponse>> getAllByTypeId(Integer id) {
+        List<WordType> optional = this.wordTypeRepository.findByTypeIdAndDeletedAtIsNull(id);
+        if (optional.isEmpty()) {
+            return ResponseDto.<List<WordTypeResponse>>builder()
+                    .code(-1)
+                    .message("WordTypesAre not found")
+                    .build();
+        }
+        return ResponseDto.<List<WordTypeResponse>>builder()
+                .success(true)
+                .message("Ok")
+                .data(optional.stream().map(this.wordTypeMapper::toDto).toList())
                 .build();
     }
 }

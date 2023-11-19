@@ -1,25 +1,18 @@
-package com.example.first.entity;
+package com.example.second.client;
 
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-
 @Getter
 @Setter
 @Builder
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "wordType")
-public class WordType {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class WordTypeResponse {
     private Integer id;
     private Integer wordId;
     private Integer wordIds;
-    private Integer typeId;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

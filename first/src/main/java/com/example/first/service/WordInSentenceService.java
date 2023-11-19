@@ -170,33 +170,33 @@ public class WordInSentenceService {
                 .build();
     }
 
-    public ResponseDto<WordInSentenceResponse> getAllByWordId(Integer id) {
-        Optional<WordInSentence> optional = this.wordInSentenceRepository.findByWordIdAndDeletedAtIsNull(id);
+    public ResponseDto<List<WordInSentenceResponse>> getAllByWordId(Integer id) {
+        List<WordInSentence> optional = this.wordInSentenceRepository.findByWordIdAndDeletedAtIsNull(id);
         if (optional.isEmpty()) {
-            return ResponseDto.<WordInSentenceResponse>builder()
+            return ResponseDto.<List<WordInSentenceResponse>>builder()
                     .code(-1)
                     .message("WordInSentences are not found")
                     .build();
         }
-        return ResponseDto.<WordInSentenceResponse>builder()
+        return ResponseDto.<List<WordInSentenceResponse>>builder()
                 .success(true)
                 .message("Ok")
-                .data(this.wordInSentenceMapper.toDto(optional.get()))
+                .data(optional.stream().map(this.wordInSentenceMapper::toDto).toList())
                 .build();
     }
 
-    public ResponseDto<WordInSentenceResponse> getAllByWordInSentenceId(Integer id) {
-        Optional<WordInSentence> optional = this.wordInSentenceRepository.findBySentenceIdAndDeletedAtIsNull(id);
+    public ResponseDto<List<WordInSentenceResponse>> getAllBySentenceId(Integer id) {
+        List<WordInSentence> optional = this.wordInSentenceRepository.findBySentenceIdAndDeletedAtIsNull(id);
         if (optional.isEmpty()) {
-            return ResponseDto.<WordInSentenceResponse>builder()
+            return ResponseDto.<List<WordInSentenceResponse>>builder()
                     .code(-1)
                     .message("WordInSentences are not found")
                     .build();
         }
-        return ResponseDto.<WordInSentenceResponse>builder()
+        return ResponseDto.<List<WordInSentenceResponse>>builder()
                 .success(true)
                 .message("Ok")
-                .data(this.wordInSentenceMapper.toDto(optional.get()))
+                .data(optional.stream().map(this.wordInSentenceMapper::toDto).toList())
                 .build();
     }
 }

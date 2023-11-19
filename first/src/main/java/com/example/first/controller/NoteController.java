@@ -52,7 +52,7 @@ public class NoteController {
     }
 
     @GetMapping("/getAllNoteByWordId")
-    public ResponseDto<NoteResponse> getAllByWordId(@RequestParam Integer id) {
+    public ResponseDto<List<NoteResponse>> getAllNoteByWordId(@RequestParam Integer id) {
         return this.noteService.getAllByWordId(id);
     }
 }

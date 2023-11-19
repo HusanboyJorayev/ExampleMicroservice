@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface NoteRepository extends JpaRepository<Note,Integer> {
     Optional<Note> findByIdAndDeletedAtIsNull(Integer id);
-    Optional<Note>findByWordIdAndDeletedAtIsNull(Integer wordId);
+    List<Note>findByWordIdAndDeletedAtIsNull(Integer wordId);
 
 
     @Query(

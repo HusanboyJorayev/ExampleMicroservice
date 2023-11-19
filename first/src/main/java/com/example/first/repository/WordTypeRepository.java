@@ -15,7 +15,9 @@ import java.util.Optional;
 public interface WordTypeRepository extends JpaRepository<WordType, Integer> {
     Optional<WordType> findByIdAndDeletedAtIsNull(Integer id);
 
-    Optional<WordType>findByWordIdAndDeletedAtIsNull(Integer wordId);
+    List<WordType>findByWordIdAndDeletedAtIsNull(Integer wordId);
+
+    List<WordType>findByTypeIdAndDeletedAtIsNull(Integer typeId);
 
 
     @Query(

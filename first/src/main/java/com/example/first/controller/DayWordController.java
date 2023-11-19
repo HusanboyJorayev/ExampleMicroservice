@@ -50,8 +50,8 @@ public class DayWordController {
         return this.dayWordService.getPage(page, size);
     }
 
-    @GetMapping("/getAlldayWordByWordId")
-    public ResponseDto<DayWordResponse> getAllByWordId(@RequestParam Integer id) {
+    @GetMapping("/getAllDayWordByWordId")
+    public ResponseDto<List<DayWordResponse>> getAllDayWordByWordId(@RequestParam Integer id) {
         return this.dayWordService.getAllByWordId(id);
     }
 

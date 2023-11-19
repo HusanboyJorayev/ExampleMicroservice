@@ -170,18 +170,18 @@ public class NoteService {
                 .build();
     }
 
-    public ResponseDto<NoteResponse> getAllByWordId(Integer id) {
-        Optional<Note> optional = this.noteRepository.findByWordIdAndDeletedAtIsNull(id);
+    public ResponseDto<List<NoteResponse>> getAllByWordId(Integer id) {
+        List<Note> optional = this.noteRepository.findByWordIdAndDeletedAtIsNull(id);
         if (optional.isEmpty()) {
-            return ResponseDto.<NoteResponse>builder()
+            return ResponseDto.<List<NoteResponse>>builder()
                     .code(-1)
                     .message("Notes are not found")
                     .build();
         }
-        return ResponseDto.<NoteResponse>builder()
+        return ResponseDto.<List<NoteResponse>>builder()
                 .success(true)
                 .message("Ok")
-                .data(this.noteMapper.toDto(optional.get()))
+                .data(optional.stream().map(this.noteMapper::toDto).toList())
                 .build();
     }
 }

@@ -170,19 +170,18 @@ public class DayWordService {
                 .build();
     }
 
-    public ResponseDto<DayWordResponse> getAllByWordId(Integer id) {
-        Optional<DayWord> optional = this.dayWordRepository.findByWordIdAndDeletedAtIsNull(id);
+    public ResponseDto<List<DayWordResponse>> getAllByWordId(Integer id) {
+        List<DayWord> optional = this.dayWordRepository.findByWordIdAndDeletedAtIsNull(id);
         if (optional.isEmpty()) {
-            return ResponseDto.<DayWordResponse>builder()
+            return ResponseDto.<List<DayWordResponse>>builder()
                     .code(-1)
                     .message("DayWords are not found")
                     .build();
         }
-        DayWord dayWord = optional.get();
-        return ResponseDto.<DayWordResponse>builder()
+        return ResponseDto.<List<DayWordResponse>>builder()
                 .success(true)
                 .message("Ok")
-                .data(this.dayWordMapper.toDto(dayWord))
+                .data(optional.stream().map(this.dayWordMapper::toDto).toList())
                 .build();
     }
 }

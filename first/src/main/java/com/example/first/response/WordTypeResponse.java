@@ -13,6 +13,7 @@ public class WordTypeResponse {
     private Integer id;
     private Integer wordId;
     private Integer wordIds;
+    private Integer typeId;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

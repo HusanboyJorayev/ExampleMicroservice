@@ -51,7 +51,12 @@ public class WordTypeController {
     }
 
     @GetMapping("/getAllByWordId")
-    public ResponseDto<WordTypeResponse> getAllByWordId(@RequestParam Integer id) {
+    public ResponseDto<List<WordTypeResponse>>getAllByWordId(@RequestParam Integer id) {
         return this.wordTypeService.getAllByWordId(id);
+    }
+
+    @GetMapping("/getAllByTypeId")
+    public ResponseDto<List<WordTypeResponse>> getAllByTypeId(@RequestParam Integer id){
+        return this.wordTypeService.getAllByTypeId(id);
     }
 }

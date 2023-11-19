@@ -1,25 +1,22 @@
-package com.example.first.entity;
+package com.example.second.client;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-
 @Getter
 @Setter
 @Builder
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "wordType")
-public class WordType {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class WordInSentenceResponse {
     private Integer id;
+    @NotNull
     private Integer wordId;
-    private Integer wordIds;
-    private Integer typeId;
+    @NotNull
+    private Integer sentenceId;
+    private Integer orders;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

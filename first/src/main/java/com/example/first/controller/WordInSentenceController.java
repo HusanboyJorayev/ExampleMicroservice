@@ -51,12 +51,12 @@ public class WordInSentenceController {
     }
 
     @GetMapping("/getAllByWordId")
-    public ResponseDto<WordInSentenceResponse> getAllByWordId(@RequestParam Integer id) {
+    public ResponseDto<List<WordInSentenceResponse>> getAllWordInSentenceByWordId(@RequestParam Integer id) {
         return this.wordInSentenceService.getAllByWordId(id);
     }
 
-    @GetMapping("/getAllByWordInSentenceId")
-    public ResponseDto<WordInSentenceResponse> getAllByWordInSentenceId(@RequestParam Integer id) {
-        return this.wordInSentenceService.getAllByWordInSentenceId(id);
+    @GetMapping("/getAllByWordInSentenceBySentenceId")
+    public ResponseDto<List<WordInSentenceResponse>> getAllWordInSentenceBySentenceId(@RequestParam Integer id) {
+        return this.wordInSentenceService.getAllBySentenceId(id);
     }
 }

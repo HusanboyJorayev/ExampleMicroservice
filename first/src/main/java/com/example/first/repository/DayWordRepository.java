@@ -15,7 +15,7 @@ import java.util.Optional;
 public interface DayWordRepository extends JpaRepository<DayWord, Integer> {
     Optional<DayWord> findByIdAndDeletedAtIsNull(Integer id);
 
-    Optional<DayWord>findByWordIdAndDeletedAtIsNull(Integer wordId);
+    List<DayWord>findByWordIdAndDeletedAtIsNull(Integer wordId);
 
 
     @Query(

@@ -1,25 +1,24 @@
-package com.example.first.entity;
+package com.example.second.client;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-
 @Getter
 @Setter
 @Builder
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "wordType")
-public class WordType {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class NoteResponse {
     private Integer id;
     private Integer wordId;
-    private Integer wordIds;
-    private Integer typeId;
+    @NotBlank
+    private String title;
+    @NotBlank
+    private String description;
+    @NotBlank
+    private String source;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
