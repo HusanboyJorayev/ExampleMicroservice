@@ -1,0 +1,30 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+
+server:
+  port: 8070
+  servlet:
+    context-path: /second
+spring:
+  application:
+    name: second
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/izoh_db
+    username: izoh_user
+    password: izoh_pwd
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
