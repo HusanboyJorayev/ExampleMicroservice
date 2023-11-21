@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+/*@RestController
 @RequestMapping("test")
 @RequiredArgsConstructor
 public class TestController {
@@ -34,7 +34,7 @@ public class TestController {
         return this.dayWordClient.getAllDayWordByWordId(id);
     }
 
-    @GetMapping("/getAllByWordId")
+    @GetMapping("/getAllWordInSentenceByWordId")
     public ResponseDto<List<WordInSentenceResponse>>getAllWordInSentenceByWordId(@RequestParam Integer id) {
         return this.wordInSentenceClient.getAllWordInSentenceByWordId(id);
     }
@@ -48,4 +48,4 @@ public class TestController {
     public ResponseDto<List<WordInSentenceResponse>> getAllWordInSentenceBySentenceId(@RequestParam Integer id) {
         return this.wordInSentenceClient.getAllWordInSentenceBySentenceId(id);
     }
-}
+}*/

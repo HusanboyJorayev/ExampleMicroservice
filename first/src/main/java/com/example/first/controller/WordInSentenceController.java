@@ -50,7 +50,7 @@ public class WordInSentenceController {
         return this.wordInSentenceService.getPage(page, size);
     }
 
-    @GetMapping("/getAllByWordId")
+    @GetMapping("/getAllWordInSentenceByWordId")
     public ResponseDto<List<WordInSentenceResponse>> getAllWordInSentenceByWordId(@RequestParam Integer id) {
         return this.wordInSentenceService.getAllByWordId(id);
     }
