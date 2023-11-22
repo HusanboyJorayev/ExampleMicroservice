@@ -1,17 +1,20 @@
 package com.example.second.client;
 
 import com.example.second.dto.ResponseDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.FeignClientSpecification;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 //@FeignClient(name = "",path ="/first/wordType" /*"http://localhost:8090"*/)
-@FeignClient("first")
+/*@FeignClient("first")
 public interface WordTypeClient {
 
     //@GetMapping("/getAllByWordId")
@@ -36,4 +39,5 @@ public interface WordTypeClient {
     @RequestMapping(method = RequestMethod.GET, value = "/wordInSentence/getAllByWordInSentenceBySentenceId")
     ResponseDto<List<WordInSentenceResponse>> getAllWordInSentenceBySentenceId(@RequestParam Integer id);
 
-}
+
+}*/

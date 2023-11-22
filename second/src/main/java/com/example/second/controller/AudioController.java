@@ -5,7 +5,9 @@ import com.example.second.response.AudioResponse;
 import com.example.second.service.AudioService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AudioController {
 
     private final AudioService audioService;
+
 
     @PostMapping("/upload")
     public ResponseDto<AudioResponse> upload(@RequestBody MultipartFile file) {

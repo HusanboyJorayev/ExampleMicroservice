@@ -49,4 +49,5 @@ public class CategoryController {
     public ResponseDto<Page<CategoryResponse>> getPage(@RequestParam Integer page, @RequestParam Integer size) {
         return this.categoryService.getPage(page, size);
     }
+
 }
