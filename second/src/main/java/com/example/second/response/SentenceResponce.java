@@ -1,6 +1,7 @@
 package com.example.second.response;
 
 import com.example.second.client.WordInSentenceResponse;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SentenceResponce {
     private Integer id;
     @NotBlank

@@ -1,5 +1,6 @@
 package com.example.first.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DayWordResponse {
     private Integer id;
     private LocalDate date;
